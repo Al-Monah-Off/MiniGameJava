@@ -29,11 +29,46 @@ public class Snake {
 
         move = "NOTHING";
     }
+
+    public void move(){
+        if (move != "NOTHING"){
+            Rectangle first = body.get(0);
+            Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
+
+            if (move == "UP")temp.setLocation(first.x,first.y -Game.dimension);
+            else if(move == "DOWN")temp.setLocation(first.x,first.y +Game.dimension);
+            else if(move == "LEFT")temp.setLocation(first.x -Game.dimension,temp.y);
+            else temp.setLocation(first.x +Game.dimension,temp.y);
+
+            body.add(0,temp);
+            body.remove(body.size() -1);
+        }
+    }
+
+    public void grow(){
+        Rectangle first = body.get(0);
+        Rectangle temp = new Rectangle(Game.dimension, Game.dimension);
+
+        if (move == "UP")temp.setLocation(first.x,first.y -Game.dimension);
+        else if(move == "DOWN")temp.setLocation(first.x,first.y +Game.dimension);
+        else if(move == "LEFT")temp.setLocation(first.x -Game.dimension,temp.y);
+        else temp.setLocation(first.x +Game.dimension,temp.y);
+
+        body.add(0,temp);
+    }
+
     public ArrayList<Rectangle> getBody() {
         return body;
     }
     public void setBody(ArrayList<Rectangle> body) {
         this.body = body;
+    }
+
+    public int getX(){
+        return body.get(0).x;
+    }
+    public int getY(){
+        return body.get(0).y;
     }
 
     public void up(){

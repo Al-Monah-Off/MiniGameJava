@@ -26,6 +26,18 @@ public class Game
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    public boolean check_wall_collision(){
+        if (player.getX() < 0 || player.getX() >= width *dimension
+                || player.getY() < 0 || player.getY() >= height *dimension){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean check_food_collision(){
+
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
